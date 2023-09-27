@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationDetailsViewController" customModule="ForeFlight_Exercise" customModuleProvider="target">
+            <connections>
+                <outlet property="childView" destination="akf-cd-6ez" id="Abt-OK-ORc"/>
+                <outlet property="lastUpdatedLabel" destination="xX1-4d-qzJ" id="bIe-yR-SBI"/>
+                <outlet property="segmentedControl" destination="51k-RC-pcX" id="o3D-Pm-DLY"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="51k-RC-pcX">
+                    <rect key="frame" x="64" y="59" width="265" height="32"/>
+                    <segments>
+                        <segment title="Conditions"/>
+                        <segment title="Forecast"/>
+                    </segments>
+                    <connections>
+                        <action selector="segmentedControlValueChanged:" destination="-1" eventType="valueChanged" id="m9U-EG-QMW"/>
+                    </connections>
+                </segmentedControl>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akf-cd-6ez" userLabel="Child View">
+                    <rect key="frame" x="0.0" y="98" width="393" height="698"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last updated at" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xX1-4d-qzJ" userLabel="Last Updated Label">
+                    <rect key="frame" x="16" y="804" width="361" height="14"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="akf-cd-6ez" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6a6-eS-7Yg"/>
+                <constraint firstItem="akf-cd-6ez" firstAttribute="top" secondItem="51k-RC-pcX" secondAttribute="bottom" constant="8" id="MIn-82-JJu"/>
+                <constraint firstItem="51k-RC-pcX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="64" id="NbB-YW-EYT"/>
+                <constraint firstItem="akf-cd-6ez" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="ONX-0i-rQZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="51k-RC-pcX" secondAttribute="trailing" constant="64" id="OUR-1N-CGv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="xX1-4d-qzJ" secondAttribute="bottom" id="PY4-E4-oha"/>
+                <constraint firstItem="xX1-4d-qzJ" firstAttribute="top" secondItem="akf-cd-6ez" secondAttribute="bottom" constant="8" symbolic="YES" id="VGO-c1-gk9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xX1-4d-qzJ" secondAttribute="trailing" constant="16" id="f1m-LW-Sav"/>
+                <constraint firstItem="xX1-4d-qzJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="ttd-zf-Eih"/>
+                <constraint firstItem="51k-RC-pcX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="vba-rx-otB"/>
+            </constraints>
+            <point key="canvasLocation" x="130.53435114503816" y="-11.267605633802818"/>
+        </view>
+        <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="JlK-Qp-4KY">
+            <point key="canvasLocation" x="978" y="-17"/>
+        </pageViewController>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
