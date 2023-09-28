@@ -27,6 +27,17 @@ enum APIError: Error, LocalizedError {
     }
 }
 
+enum UserError: Error, LocalizedError {
+    case identifierAlreadyExists
+    
+    var errorDescription: String? {
+        switch self {
+        case .identifierAlreadyExists:
+            return "Cannot add an identifier that already exists."
+        }
+    }
+}
+
 struct NetworkClient {
     // MARK: - Properties
     private let urlSession = URLSession.shared

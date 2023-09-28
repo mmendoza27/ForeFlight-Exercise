@@ -8,7 +8,7 @@
 import CoreLocation
 import Foundation
 
-struct WeatherReport {
+struct WeatherReport: Hashable {
     var conditions: Conditions
     var forecast: Forecast
     var lastUpdated: Date
@@ -20,7 +20,7 @@ struct WeatherReport {
     }
 }
 
-struct Conditions {
+struct Conditions: Hashable {
     var text: String
     var identifier: String
     var dateIssued: Date
@@ -46,7 +46,7 @@ struct Conditions {
     }
 }
 
-struct Forecast {
+struct Forecast: Hashable {
     var text: String
     var identifier: String
     var dateIssued: Date

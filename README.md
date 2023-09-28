@@ -44,8 +44,11 @@ I used typical iOS development references such as:
         * SwiftLee (https://www.avanderlee.com/swift/reflection-how-mirror-works/)
     
 ## Known Issues
-None that I'm aware of at the moment.
+    * The SwiftUI/UIKit switcher is unimplemented.
 
 
 ## Additional Notes
-I don't have any additional notes or comments. I may bring up additional comments while discussing my decisions in the final interview.
+I decided to use branches to play around with some additional features. You can use the `composable-architecture` 
+branch to see how I used The Composable Architecture (https://github.com/pointfreeco/swift-composable-architecture)
+in this project. I also added some SwiftUI views and you can explore how I would represent the UI in SwiftUI in the
+`swift-ui` branch. 

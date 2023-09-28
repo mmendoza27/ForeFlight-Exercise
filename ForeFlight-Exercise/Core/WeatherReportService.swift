@@ -54,7 +54,7 @@ class WeatherReportService {
         }
         
         var request = URLRequest(url: url)
-        request.setValue("1", forHTTPHeaderField: "ff-coding-exercise")
+        request.setValue("1", forHTTPHeaderField: Constants.codingExerciseHTTPHeader)
         
         return try await networkClient.requestData(from: request)
     }

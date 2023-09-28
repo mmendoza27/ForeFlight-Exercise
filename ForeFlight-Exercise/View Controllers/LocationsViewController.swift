@@ -125,25 +125,33 @@ class LocationsViewController: UIViewController {
     
     // MARK: Public Methods
     func attemptToAddNewReport(airportIdentifier: String) async {
-        self.showActivityIndicator()
+        let identifiers = weatherReports.map { $0.forecast.identifier.uppercased() }
         
-        do {
-            let weatherReport = try await weatherReportService.retrieveWeatherReport(for: airportIdentifier).value
-            weatherReports.append(weatherReport)
-            
-            cacheClient.addAirportLocation(airportIdentifier, for: .requestedAirports)
-            logger.info("\(airportIdentifier) was added to the list!")
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.delegate?.weatherReportWasTapped(report: weatherReport)
-            }
-        } catch {
+        if identifiers.contains(airportIdentifier) {
+            let error = UserError.identifierAlreadyExists
             logger.error("\(error.localizedDescription)")
             delegate?.addNewLocationFailed(error: error)
+        } else {
+            self.showActivityIndicator()
+            
+            do {
+                let weatherReport = try await weatherReportService.retrieveWeatherReport(for: airportIdentifier).value
+                weatherReports.append(weatherReport)
+                
+                cacheClient.addAirportLocation(airportIdentifier, for: .requestedAirports)
+                logger.info("\(airportIdentifier) was added to the list!")
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    self.delegate?.weatherReportWasTapped(report: weatherReport)
+                }
+            } catch {
+                logger.error("\(error.localizedDescription)")
+                delegate?.addNewLocationFailed(error: error)
+            }
+            
+            self.hideActivityIndicator()
         }
-        
-        self.hideActivityIndicator()
     }
     
     func showActivityIndicator() {

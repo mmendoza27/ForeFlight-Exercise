@@ -43,7 +43,7 @@ extension WeatherConditionsViewController: UITableViewDataSource {
         
         var contentConfiguration = UIListContentConfiguration.valueCell()
         let index = AnyIndex(indexPath.row)
-        contentConfiguration.text = mirror.children[index].label
+        contentConfiguration.text = mirror.children[index].label?.localizedCapitalized
         contentConfiguration.secondaryText = String(describing: mirror.children[index].value)
         
         cell.contentConfiguration = contentConfiguration
