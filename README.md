@@ -10,8 +10,6 @@ spent the rest of my time polishing the app and adding a lot of minor things suc
     * Implementation of background task refreshing to ensure our fetching works when the app is backgrounded.
     * Pull-to-refresh for manual refreshing of our weather reports.
     * Logging that simulates analytics to keep track of user interactions.
-    * Caching of the last retrieved report for each airport.
-    * Unit testing.
 
 ## Design Decisions
 I think the minimal effort for a project like this would be a single view where you have UISwitch, a visible 
@@ -50,5 +48,4 @@ I used typical iOS development references such as:
 ## Additional Notes
 I decided to use branches to play around with some additional features. You can use the `composable-architecture` 
 branch to see how I used The Composable Architecture (https://github.com/pointfreeco/swift-composable-architecture)
-in this project. I also added some SwiftUI views and you can explore how I would represent the UI in SwiftUI in the
-`swift-ui` branch. 
+in this project.
