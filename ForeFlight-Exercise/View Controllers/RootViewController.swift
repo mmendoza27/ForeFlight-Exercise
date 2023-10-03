@@ -20,17 +20,22 @@ class RootViewController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let locationsViewController = LocationsViewController(
-            weatherReportService: weatherReportService,
-            delegate: self
-        )
-        
-        viewControllers = [locationsViewController]
-        currentViewController = locationsViewController
-        
         let settings = CacheClient.shared.restoreSettingsFromCache()
-        if settings.retrievalType == .fetch {
-            setupAutomaticRefresh(for: settings.fetchInterval)
+        if settings.userInterfaceFramework == .swiftUI {
+            self.isNavigationBarHidden = true
+            
+        } else if settings.userInterfaceFramework == .uiKit {
+            let locationsViewController = LocationsViewController(
+                weatherReportService: weatherReportService,
+                delegate: self
+            )
+            
+            viewControllers = [locationsViewController]
+            currentViewController = locationsViewController
+            
+            if settings.retrievalType == .fetch {
+                setupAutomaticRefresh(for: settings.fetchInterval)
+            }
         }
     }
     

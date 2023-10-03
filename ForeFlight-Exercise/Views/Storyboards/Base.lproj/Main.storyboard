@@ -10,14 +10,27 @@
         <scene sceneID="xY4-Mw-TnN">
             <objects>
                 <navigationController id="rbV-bl-YTy" customClass="RootViewController" customModule="ForeFlight_Exercise" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="k81-ea-8cN">
-                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k81-ea-8cN">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="H9D-6o-Kqm" kind="relationship" relationship="rootViewController" id="c9B-sX-KXl"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZu-7k-bvI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="541" y="-27"/>
+        </scene>
+        <!--SwiftUI View Controller-->
+        <scene sceneID="Fls-m7-OaR">
+            <objects>
+                <hostingController id="H9D-6o-Kqm" customClass="SwiftUIViewController" customModule="ForeFlight_Exercise" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dkI-zo-CBt"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CZD-Qg-nX9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1332" y="-27"/>
         </scene>
     </scenes>
 </document>

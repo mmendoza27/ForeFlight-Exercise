@@ -5,55 +5,48 @@
 //  Created by Michael Mendoza on 9/28/23.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 struct LocationDetailsView: View {
-    enum PickerItem: Int {
-        case conditions
-        case forecast
-    }
-    
-    var weatherReport: WeatherReport
-    
-    @State private var selectedPickerIndex = 0
+    let store: StoreOf<LocationDetailFeature>
     
     var body: some View {
-        VStack {
-            Picker("Picker", selection: $selectedPickerIndex) {
-                Text("Conditions")
-                    .tag(0)
-                Text("Forecast")
-                    .tag(1)
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            VStack {
+                Picker("Picker", selection: viewStore.$currentView) {
+                    Text("Conditions")
+                        .tag(LocationDetailFeature.CurrentView.conditions)
+                    Text("Forecast")
+                        .tag(LocationDetailFeature.CurrentView.forecast)
+                }
+                .pickerStyle(.segmented)
+                .padding(.horizontal, 64.0)
+                
+                LocationDetailsInformationView(
+                    currentView: viewStore.$currentView,
+                    weatherReport: viewStore.weatherReport
+                )
+                
+                Spacer()
+                
+                Text("Last updated at \(viewStore.weatherReport.lastUpdated)")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
             }
-            .pickerStyle(.segmented)
-            .padding(.horizontal, 64.0)
-            
-            LocationDetailsInformationView(
-                pickerItem: Binding(
-                    get: { PickerItem(rawValue: selectedPickerIndex)! },
-                    set: { item in selectedPickerIndex = item.rawValue }
-                ),
-                weatherReport: weatherReport
-            )
-            
-            Spacer()
-            
-            Text("Last updated at \(weatherReport.lastUpdated)")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
+            .navigationTitle(viewStore.weatherReport.forecast.identifier.uppercased())
+            .background(Color(uiColor: .systemGroupedBackground))
         }
-        .navigationTitle(weatherReport.forecast.identifier.uppercased())
-        .background(Color(uiColor: .systemGroupedBackground))
     }
 }
 
 private struct LocationDetailsInformationView: View {
-    @Binding var pickerItem: LocationDetailsView.PickerItem
+    @Binding var currentView: LocationDetailFeature.CurrentView
     var weatherReport: WeatherReport
     
     var body: some View {
-        switch pickerItem {
+        switch currentView {
         case .conditions:
             List {
                 LocationDetailsInformationRowView(
@@ -145,8 +138,15 @@ private struct LocationDetailsInformationRowView: View {
 
 #Preview {
     LocationDetailsView(
-        weatherReport: WeatherReport(
-            from: PreviewData.sanAntonio
+        store: Store(
+            initialState: LocationDetailFeature.State(
+                weatherReport: WeatherReport(
+                    from: PreviewData.sanAntonio
+                )
+            ), 
+            reducer: {
+                LocationDetailFeature()
+            }
         )
     )
 }

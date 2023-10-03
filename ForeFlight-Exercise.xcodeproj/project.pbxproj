@@ -24,6 +24,15 @@
 		136190302AC0B06700A3CA28 /* WeatherForecastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1361902E2AC0B06700A3CA28 /* WeatherForecastViewController.xib */; };
 		136190322AC0ECE600A3CA28 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 136190312AC0ECE600A3CA28 /* Settings.storyboard */; };
 		136190342AC0FC9E00A3CA28 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136190332AC0FC9E00A3CA28 /* SettingsViewController.swift */; };
+		137280082ACB122600C849D8 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 137280072ACB122600C849D8 /* ComposableArchitecture */; };
+		1372800A2ACB12DA00C849D8 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137280092ACB12DA00C849D8 /* AppFeature.swift */; };
+		1372800C2ACB13B500C849D8 /* SettingsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1372800B2ACB13B500C849D8 /* SettingsFeature.swift */; };
+		137280112ACB15C800C849D8 /* WeatherReportClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137280102ACB15C800C849D8 /* WeatherReportClient.swift */; };
+		137280132ACB19D100C849D8 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137280122ACB19D100C849D8 /* HTTPClient.swift */; };
+		137280152ACB2C5000C849D8 /* CachingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137280142ACB2C5000C849D8 /* CachingClient.swift */; };
+		137280172ACB882400C849D8 /* SettingsFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137280162ACB882400C849D8 /* SettingsFeatureTests.swift */; };
+		137280192ACBA51900C849D8 /* SwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137280182ACBA51900C849D8 /* SwiftUIViewController.swift */; };
+		1372801B2ACBA88300C849D8 /* LocationDetailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1372801A2ACBA88300C849D8 /* LocationDetailFeature.swift */; };
 		138212F32AC5D0E300F1A85E /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138212F22AC5D0E300F1A85E /* UserDefaultsKeys.swift */; };
 		138212F52AC5D19B00F1A85E /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138212F42AC5D19B00F1A85E /* LocationsView.swift */; };
 		138212F72AC5D31400F1A85E /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138212F62AC5D31400F1A85E /* Image+Extensions.swift */; };
@@ -87,6 +96,14 @@
 		1361902E2AC0B06700A3CA28 /* WeatherForecastViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherForecastViewController.xib; sourceTree = "<group>"; };
 		136190312AC0ECE600A3CA28 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		136190332AC0FC9E00A3CA28 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		137280092ACB12DA00C849D8 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
+		1372800B2ACB13B500C849D8 /* SettingsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFeature.swift; sourceTree = "<group>"; };
+		137280102ACB15C800C849D8 /* WeatherReportClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherReportClient.swift; sourceTree = "<group>"; };
+		137280122ACB19D100C849D8 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		137280142ACB2C5000C849D8 /* CachingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingClient.swift; sourceTree = "<group>"; };
+		137280162ACB882400C849D8 /* SettingsFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFeatureTests.swift; sourceTree = "<group>"; };
+		137280182ACBA51900C849D8 /* SwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewController.swift; sourceTree = "<group>"; };
+		1372801A2ACBA88300C849D8 /* LocationDetailFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailFeature.swift; sourceTree = "<group>"; };
 		138212F22AC5D0E300F1A85E /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
 		138212F42AC5D19B00F1A85E /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
 		138212F62AC5D31400F1A85E /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
@@ -115,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				137280082ACB122600C849D8 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				133383E12ABA30640030C12A /* ForeFlight_ExerciseTests.swift */,
+				137280162ACB882400C849D8 /* SettingsFeatureTests.swift */,
 			);
 			path = "ForeFlight-ExerciseTests";
 			sourceTree = "<group>";
@@ -209,6 +228,16 @@
 			path = "UI Models";
 			sourceTree = "<group>";
 		};
+		1372800D2ACB13BC00C849D8 /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+				137280092ACB12DA00C849D8 /* AppFeature.swift */,
+				1372800B2ACB13B500C849D8 /* SettingsFeature.swift */,
+				1372801A2ACBA88300C849D8 /* LocationDetailFeature.swift */,
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
 		138212F12AC5CF4900F1A85E /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +267,7 @@
 				136190292AC0B05600A3CA28 /* WeatherConditionsViewController.swift */,
 				1361902D2AC0B06700A3CA28 /* WeatherForecastViewController.swift */,
 				136190332AC0FC9E00A3CA28 /* SettingsViewController.swift */,
+				137280182ACBA51900C849D8 /* SwiftUIViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -287,9 +317,13 @@
 		13BD6B062ABBCEF7001666AC /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				1372800D2ACB13BC00C849D8 /* Reducers */,
+				137280122ACB19D100C849D8 /* HTTPClient.swift */,
 				13BD6B0C2ABBD0C9001666AC /* NetworkClient.swift */,
+				137280102ACB15C800C849D8 /* WeatherReportClient.swift */,
 				13BD6B0A2ABBD08D001666AC /* WeatherReportService.swift */,
 				133495942AC3AB1A00102690 /* CacheClient.swift */,
+				137280142ACB2C5000C849D8 /* CachingClient.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -320,6 +354,9 @@
 			dependencies = (
 			);
 			name = "ForeFlight-Exercise";
+			packageProductDependencies = (
+				137280072ACB122600C849D8 /* ComposableArchitecture */,
+			);
 			productName = "ForeFlight-Exercise";
 			productReference = 133383C72ABA30630030C12A /* ForeFlight-Exercise.app */;
 			productType = "com.apple.product-type.application";
@@ -392,6 +429,9 @@
 				Base,
 			);
 			mainGroup = 133383BE2ABA30630030C12A;
+			packageReferences = (
+				137280062ACB122600C849D8 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 133383C82ABA30630030C12A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -442,11 +482,15 @@
 			files = (
 				138212F92AC5D47000F1A85E /* LocationDetailsView.swift in Sources */,
 				13BD6B152ABCAFC7001666AC /* ErrorResponse.swift in Sources */,
+				1372801B2ACBA88300C849D8 /* LocationDetailFeature.swift in Sources */,
 				133383CB2ABA30630030C12A /* AppDelegate.swift in Sources */,
 				13BD6B132ABCA931001666AC /* ForecastDataModel.swift in Sources */,
+				137280132ACB19D100C849D8 /* HTTPClient.swift in Sources */,
 				133383CD2ABA30630030C12A /* SceneDelegate.swift in Sources */,
+				137280192ACBA51900C849D8 /* SwiftUIViewController.swift in Sources */,
 				13BD6B0D2ABBD0C9001666AC /* NetworkClient.swift in Sources */,
 				13BD6AF62ABB8C4B001666AC /* UIImage+Extensions.swift in Sources */,
+				1372800C2ACB13B500C849D8 /* SettingsFeature.swift in Sources */,
 				13BD6B0B2ABBD08D001666AC /* WeatherReportService.swift in Sources */,
 				133495972AC3AE2300102690 /* CacheEntryObject.swift in Sources */,
 				13A846742ABCD3BE00B71AA3 /* PreviewData.swift in Sources */,
@@ -462,7 +506,10 @@
 				13BD6B112ABCA8FF001666AC /* ConditionsDataModel.swift in Sources */,
 				13BD6B012ABBAA5E001666AC /* Constants.swift in Sources */,
 				138212FB2AC5DE9200F1A85E /* SettingsView.swift in Sources */,
+				137280112ACB15C800C849D8 /* WeatherReportClient.swift in Sources */,
 				1361902B2AC0B05600A3CA28 /* WeatherConditionsViewController.swift in Sources */,
+				137280152ACB2C5000C849D8 /* CachingClient.swift in Sources */,
+				1372800A2ACB12DA00C849D8 /* AppFeature.swift in Sources */,
 				136190342AC0FC9E00A3CA28 /* SettingsViewController.swift in Sources */,
 				138212F52AC5D19B00F1A85E /* LocationsView.swift in Sources */,
 				133495992AC3B19000102690 /* Settings.swift in Sources */,
@@ -475,6 +522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				133383E22ABA30640030C12A /* ForeFlight_ExerciseTests.swift in Sources */,
+				137280172ACB882400C849D8 /* SettingsFeatureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +861,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		137280062ACB122600C849D8 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		137280072ACB122600C849D8 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 137280062ACB122600C849D8 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 133383BF2ABA30630030C12A /* Project object */;
 }

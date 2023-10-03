@@ -8,12 +8,14 @@
 import CoreLocation
 import Foundation
 
-struct WeatherReport: Hashable {
+struct WeatherReport: Identifiable, Hashable {
+    let id: String
     var conditions: Conditions
     var forecast: Forecast
     var lastUpdated: Date
     
     public init(from dataModel: WeatherReportDataModel) {
+        self.id = dataModel.forecast.identifier.uppercased()
         self.conditions = Conditions(from: dataModel.conditions)
         self.forecast = Forecast(from: dataModel.forecast)
         self.lastUpdated = dataModel.lastUpdated

@@ -5,109 +5,94 @@
 //  Created by Michael Mendoza on 9/28/23.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var settings = Settings(
-        retrievalType: .pull,
-        fetchInterval: .oneMinute,
-        userInterfaceFramework: .swiftUI
-    )
-    
     @Environment(\.dismiss) var dismiss
+    let store: StoreOf<SettingsFeature>
     
-    var fetchToggleState: Binding<Bool> {
-        Binding(
-            get: { settings.retrievalType == .fetch },
-            set: { newValue in
-                if newValue {
-                    settings.retrievalType = .fetch
-                } else {
-                    settings.retrievalType = .pull
-                }
-            }
-        )
-    }
-    
-    var fetchIntervalTitle: String {
-        switch settings.fetchInterval {
-        case .oneMinute:
-            "1 minute"
-        case .fiveMinutes:
-            "5 minutes"
-        case .fifteenMinutes:
-            "15 minutes"
-        }
-    }
-    
-    var uiFrameworkTitle: String {
-        switch settings.userInterfaceFramework {
-        case .uiKit:
-            "UI Kit"
-        case .swiftUI:
-            "Swift UI"
-        }
-    }
-    
-    var body: some View {
-        List {
-            Section("Automatic Updates") {
-                Toggle(
-                    "Fetch New Data Automatically",
-                    isOn: fetchToggleState
-                )
-                HStack {
-                    Text("Fetch Interval")
-                    Spacer()
-                    Menu(fetchIntervalTitle) {
-                        Button("1 minute", action: { settings.fetchInterval = .oneMinute })
-                        Button("5 minutes", action: { settings.fetchInterval = .fiveMinutes })
-                        Button("15 minutes", action: { settings.fetchInterval = .fifteenMinutes })
-                    }
-                    .disabled(!fetchToggleState.wrappedValue)
-                }
+    struct ViewState: Equatable {
+        @BindingViewState var isToggleOn: Bool
+        var fetchIntervalTitle: String
+        var preferredFrameworkTitle: String
+        
+        init(_ bindingViewStore: BindingViewStore<SettingsFeature.State>) {
+            self._isToggleOn = bindingViewStore.$fetchIsOn
+            
+            switch bindingViewStore.fetchInterval {
+            case .oneMinute:
+                self.fetchIntervalTitle = "1 minute"
+            case .fiveMinutes:
+                self.fetchIntervalTitle = "5 minutes"
+            case .fifteenMinutes:
+                self.fetchIntervalTitle = "15 minutes"
             }
             
-            Section("UI Framework") {
-                HStack {
-                    Text("Type")
-                    Spacer()
-                    Menu(uiFrameworkTitle) {
-                        Button("UIKit", action: { settings.userInterfaceFramework = .uiKit })
-                        Button("SwiftUI", action: { settings.userInterfaceFramework = .swiftUI })
-                    }
-                }
-            }
-        }
-        .navigationTitle("Settings")
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button("Done", action: { dismiss() })
-                    .bold()
+            switch bindingViewStore.preferredFramework {
+            case .uiKit:
+                self.preferredFrameworkTitle = "UIKit"
+            case .swiftUI:
+                self.preferredFrameworkTitle = "SwiftUI"
             }
         }
     }
-}
-
-private struct MenuItemRow: View {
-    var title: String
     
     var body: some View {
-        HStack {
-            Menu {
-                Text("1 minute")
-                Text("5 minute")
-                Text("15 minute")
-            } label: {
-                Text(title)
+        WithViewStore(self.store, observe: { ViewState($0) }) { viewStore in
+            List {
+                Section(Constants.Settings.fetchSectionTitle) {
+                    Toggle(Constants.Settings.fetchToggleTitle, isOn: viewStore.$isToggleOn)
+                    HStack {
+                        Text(Constants.Settings.fetchIntervalTitle)
+                        Spacer()
+                        Menu(viewStore.fetchIntervalTitle) {
+                            Button(Constants.Buttons.oneMinute, action: {
+                                viewStore.send(.fetchIntervalChanged(newValue: .oneMinute))
+                            })
+                            Button(Constants.Buttons.fiveMinutes, action: {
+                                viewStore.send(.fetchIntervalChanged(newValue: .fiveMinutes))
+                            })
+                            Button(Constants.Buttons.fifteenMinutes, action: {
+                                viewStore.send(.fetchIntervalChanged(newValue: .fifteenMinutes))
+                            })
+                        }
+                        .disabled(!viewStore.isToggleOn)
+                    }
+                }
+                
+                Section(Constants.Settings.preferredFrameworkSectionTitle) {
+                    HStack {
+                        Text(Constants.Settings.frameworkTypeTitle)
+                        Spacer()
+                        Menu(viewStore.preferredFrameworkTitle) {
+                            Button(Constants.Buttons.uiKit, action: {
+                                viewStore.send(.preferredFrameworkChanged(newValue: .uiKit))
+                            })
+                            Button(Constants.Buttons.swiftUI, action: {
+                                viewStore.send(.preferredFrameworkChanged(newValue: .swiftUI))
+                            })
+                        }
+                    }
+                }
             }
-
+            .navigationTitle(Constants.Settings.navigationTitle)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(Constants.Buttons.doneTitle, action: { dismiss() })
+                        .bold()
+                }
+            }
         }
     }
 }
 
 #Preview {
     NavigationStack {
-        SettingsView()
+        SettingsView(
+            store: Store(initialState: .preview) {
+                SettingsFeature()
+            }
+        )
     }
 }
